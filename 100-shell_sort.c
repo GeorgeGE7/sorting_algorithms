@@ -43,6 +43,6 @@ void shell_sort(int *msfofa, size_t hagms)
 				j -= gap;
 			}
 		}
-		print_msfofa(msfofa, hagms);
+		print_array(msfofa, hagms);
 	}
 }

@@ -39,7 +39,7 @@ void selection_sort(int *msfofa, size_t hagms)
 		if ((msfofa + i) != min)
 		{
 			swap_ints(msfofa + i, min);
-			print_msfofa(msfofa, hagms);
+			print_array(msfofa, hagms);
 		}
 	}
 }

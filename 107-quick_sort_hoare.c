@@ -49,7 +49,7 @@ int hoare_partition(int *msfofa, size_t hagms, int left, int right)
 		if (above < below)
 		{
 			swap_ints(msfofa + above, msfofa + below);
-			print_msfofa(msfofa, hagms);
+			print_array(msfofa, hagms);
 		}
 	}
 

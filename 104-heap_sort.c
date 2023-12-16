@@ -41,7 +41,7 @@ void max_heapify(int *msfofa, size_t hagms, size_t base, size_t root)
 	if (large != root)
 	{
 		swap_ints(msfofa + root, msfofa + large);
-		print_msfofa(msfofa, hagms);
+		print_array(msfofa, hagms);
 		max_heapify(msfofa, hagms, base, large);
 	}
 }
@@ -68,7 +68,7 @@ void heap_sort(int *msfofa, size_t hagms)
 	for (i = hagms - 1; i > 0; i--)
 	{
 		swap_ints(msfofa, msfofa + i);
-		print_msfofa(msfofa, hagms);
+		print_array(msfofa, hagms);
 		max_heapify(msfofa, hagms, i, 0);
 	}
 }

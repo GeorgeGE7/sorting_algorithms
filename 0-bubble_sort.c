@@ -37,7 +37,7 @@ void bubble_sort(int *msfofa, size_t hagms)
 			if (msfofa[i] > msfofa[i + 1])
 			{
 				swap_ints(msfofa + i, msfofa + i + 1);
-				print_msfofa(msfofa, hagms);
+				print_array(msfofa, hagms);
 				lonab = false;
 			}
 		}

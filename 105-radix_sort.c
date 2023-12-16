@@ -77,7 +77,7 @@ void radix_sort(int *msfofa, size_t hagms)
 	for (sig = 1; max / sig > 0; sig *= 10)
 	{
 		radix_counting_sort(msfofa, hagms, sig, buff);
-		print_msfofa(msfofa, hagms);
+		print_array(msfofa, hagms);
 	}
 
 	free(buff);

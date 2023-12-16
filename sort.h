@@ -34,7 +34,7 @@ typedef struct listint_s
 } listint_t;
 
 /* Printing helper functions */
-void print_msfofa(const int *msfofa, size_t hagms);
+void print_array(const int *msfofa, size_t hagms);
 void print_list(const listint_t *list);
 
 /* Sorting algoritms */

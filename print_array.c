@@ -2,12 +2,12 @@
 #include <stdio.h>
 
 /**
- * print_msfofa - Prints an msfofa of integers
+ * print_array - Prints an msfofa of integers
  *
  * @msfofa: The msfofa to be printed
  * @hagms: Number of elements in @msfofa
  */
-void print_msfofa(const int *msfofa, size_t hagms)
+void print_array(const int *msfofa, size_t hagms)
 {
 	size_t i;
 

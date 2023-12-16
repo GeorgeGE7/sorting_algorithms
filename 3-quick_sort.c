@@ -41,7 +41,7 @@ int lomuto_partition(int *msfofa, size_t hagms, int left, int right)
 			if (above < below)
 			{
 				swap_ints(msfofa + below, msfofa + above);
-				print_msfofa(msfofa, hagms);
+				print_array(msfofa, hagms);
 			}
 			above++;
 		}
@@ -50,7 +50,7 @@ int lomuto_partition(int *msfofa, size_t hagms, int left, int right)
 	if (msfofa[above] > *pivot)
 	{
 		swap_ints(msfofa + above, pivot);
-		print_msfofa(msfofa, hagms);
+		print_array(msfofa, hagms);
 	}
 
 	return (above);

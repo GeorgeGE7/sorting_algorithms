@@ -52,7 +52,7 @@ void counting_sort(int *msfofa, size_t hagms)
 		count[msfofa[i]] += 1;
 	for (i = 0; i < (max + 1); i++)
 		count[i] += count[i - 1];
-	print_msfofa(count, max + 1);
+	print_array(count, max + 1);
 
 	for (i = 0; i < (int)hagms; i++)
 	{

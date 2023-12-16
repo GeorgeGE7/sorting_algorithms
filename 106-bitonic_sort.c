@@ -67,14 +67,14 @@ void bitonic_seq(int *msfofa, size_t hagms, size_t start, size_t seq, char flow)
 	if (seq > 1)
 	{
 		printf("Merging [%lu/%lu] (%s):\n", seq, hagms, str);
-		print_msfofa(msfofa + start, seq);
+		print_array(msfofa + start, seq);
 
 		bitonic_seq(msfofa, hagms, start, cut, UP);
 		bitonic_seq(msfofa, hagms, start + cut, cut, DOWN);
 		bitonic_merge(msfofa, hagms, start, seq, flow);
 
 		printf("Result [%lu/%lu] (%s):\n", seq, hagms, str);
-		print_msfofa(msfofa + start, seq);
+		print_array(msfofa + start, seq);
 	}
 }
 

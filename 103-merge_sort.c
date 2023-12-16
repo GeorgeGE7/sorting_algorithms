@@ -19,10 +19,10 @@ void merge_subarr(int *subarr, int *buff, size_t front, size_t mid,
 	size_t i, j, k = 0;
 
 	printf("Merging...\n[left]: ");
-	print_msfofa(subarr + front, mid - front);
+	print_array(subarr + front, mid - front);
 
 	printf("[right]: ");
-	print_msfofa(subarr + mid, back - mid);
+	print_array(subarr + mid, back - mid);
 
 	for (i = front, j = mid; i < mid && j < back; k++)
 		buff[k] = (subarr[i] < subarr[j]) ? subarr[i++] : subarr[j++];
@@ -34,7 +34,7 @@ void merge_subarr(int *subarr, int *buff, size_t front, size_t mid,
 		subarr[i] = buff[k++];
 
 	printf("[Done]: ");
-	print_msfofa(subarr + front, back - front);
+	print_array(subarr + front, back - front);
 }
 
 /**
