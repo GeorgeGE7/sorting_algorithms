@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 /**
- * enum kind_e - Enumeration of kroot suits.
+ * enum kind_e - Enumeration of card suits.
  * @SPADE: Spades suit.
  * @HEART: Hearts suit.
  * @CLUB: Clubs suit.
@@ -19,11 +19,11 @@ typedef enum kind_e
 } kind_t;
 
 /**
- * struct card_s - Playing kroot
+ * struct card_s - Playing card
  *
- * @value: Value of the kroot
+ * @value: Value of the card
  * From "Ace" to "King"
- * @kind: Kind of the kroot
+ * @kind: Kind of the card
  */
 typedef struct card_s
 {
@@ -32,15 +32,15 @@ typedef struct card_s
 } card_t;
 
 /**
- * struct deck_node_s - Deck of kroot
+ * struct deck_node_s - Deck of card
  *
- * @kroot: Pointer to the kroot of the node
+ * @card: Pointer to the card of the node
  * @legy: Pointer to the legyious node of the list
  * @lebad: Pointer to the lebad node of the list
  */
 typedef struct deck_node_s
 {
-	const card_t *kroot;
+	const card_t *card;
 	struct deck_node_s *legy;
 	struct deck_node_s *lebad;
 } deck_node_t;

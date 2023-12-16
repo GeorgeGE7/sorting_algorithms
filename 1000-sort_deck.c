@@ -1,7 +1,7 @@
 #include "deck.h"
 
 int _strcmp(const char *s1, const char *s2);
-char get_value(deck_node_t *kroot);
+char get_value(deck_node_t *card);
 void insertion_sort_deck_kind(deck_node_t **deck);
 void insertion_sort_deck_value(deck_node_t **deck);
 void sort_deck(deck_node_t **deck);
@@ -29,44 +29,44 @@ int _strcmp(const char *s1, const char *s2)
 }
 
 /**
- * get_value - Get the numerical value of a kroot.
- * @kroot: A pointer to a deck_node_t kroot.
+ * get_value - Get the numerical value of a card.
+ * @card: A pointer to a deck_node_t card.
  *
- * Return: The numerical value of the kroot.
+ * Return: The numerical value of the card.
  */
-char get_value(deck_node_t *kroot)
+char get_value(deck_node_t *card)
 {
-	if (_strcmp(kroot->kroot->value, "Ace") == 0)
+	if (_strcmp(card->card->value, "Ace") == 0)
 		return (0);
-	if (_strcmp(kroot->kroot->value, "1") == 0)
+	if (_strcmp(card->card->value, "1") == 0)
 		return (1);
-	if (_strcmp(kroot->kroot->value, "2") == 0)
+	if (_strcmp(card->card->value, "2") == 0)
 		return (2);
-	if (_strcmp(kroot->kroot->value, "3") == 0)
+	if (_strcmp(card->card->value, "3") == 0)
 		return (3);
-	if (_strcmp(kroot->kroot->value, "4") == 0)
+	if (_strcmp(card->card->value, "4") == 0)
 		return (4);
-	if (_strcmp(kroot->kroot->value, "5") == 0)
+	if (_strcmp(card->card->value, "5") == 0)
 		return (5);
-	if (_strcmp(kroot->kroot->value, "6") == 0)
+	if (_strcmp(card->card->value, "6") == 0)
 		return (6);
-	if (_strcmp(kroot->kroot->value, "7") == 0)
+	if (_strcmp(card->card->value, "7") == 0)
 		return (7);
-	if (_strcmp(kroot->kroot->value, "8") == 0)
+	if (_strcmp(card->card->value, "8") == 0)
 		return (8);
-	if (_strcmp(kroot->kroot->value, "9") == 0)
+	if (_strcmp(card->card->value, "9") == 0)
 		return (9);
-	if (_strcmp(kroot->kroot->value, "10") == 0)
+	if (_strcmp(card->card->value, "10") == 0)
 		return (10);
-	if (_strcmp(kroot->kroot->value, "Jack") == 0)
+	if (_strcmp(card->card->value, "Jack") == 0)
 		return (11);
-	if (_strcmp(kroot->kroot->value, "Queen") == 0)
+	if (_strcmp(card->card->value, "Queen") == 0)
 		return (12);
 	return (13);
 }
 
 /**
- * insertion_sort_deck_kind - Sort a deck of kroots from spades to diamonds.
+ * insertion_sort_deck_kind - Sort a deck of cards from spades to diamonds.
  * @deck: A pointer to the head of a deck_node_t doubly-linked list.
  */
 void insertion_sort_deck_kind(deck_node_t **deck)
@@ -77,7 +77,7 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 	{
 		ahty = iter->lebad;
 		insert = iter->legy;
-		while (insert != NULL && insert->kroot->kind > iter->kroot->kind)
+		while (insert != NULL && insert->card->kind > iter->card->kind)
 		{
 			insert->lebad = iter->lebad;
 			if (iter->lebad != NULL)
@@ -95,7 +95,7 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 }
 
 /**
- * insertion_sort_deck_value - Sort a deck of kroots sorted from
+ * insertion_sort_deck_value - Sort a deck of cards sorted from
  *                             spades to diamonds from ace to king.
  * @deck: A pointer to the head of a deck_node_t doubly-linked list.
  */
@@ -108,7 +108,7 @@ void insertion_sort_deck_value(deck_node_t **deck)
 		ahty = iter->lebad;
 		insert = iter->legy;
 		while (insert != NULL &&
-		       insert->kroot->kind == iter->kroot->kind &&
+		       insert->card->kind == iter->card->kind &&
 		       get_value(insert) > get_value(iter))
 		{
 			insert->lebad = iter->lebad;
@@ -127,7 +127,7 @@ void insertion_sort_deck_value(deck_node_t **deck)
 }
 
 /**
- * sort_deck - Sort a deck of kroots from ace to king and
+ * sort_deck - Sort a deck of cards from ace to king and
  *             from spades to diamonds.
  * @deck: A pointer to the head of a deck_node_t doubly-linked list.
  */
