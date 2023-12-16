@@ -35,14 +35,14 @@ typedef struct card_s
  * struct deck_node_s - Deck of card
  *
  * @card: Pointer to the card of the node
- * @legy: Pointer to the legyious node of the list
- * @lebad: Pointer to the lebad node of the list
+ * @prev: Pointer to the previous node of the list
+ * @next: Pointer to the next node of the list
  */
 typedef struct deck_node_s
 {
 	const card_t *card;
-	struct deck_node_s *legy;
-	struct deck_node_s *lebad;
+	struct deck_node_s *prev;
+	struct deck_node_s *next;
 } deck_node_t;
 
 void sort_deck(deck_node_t **deck);

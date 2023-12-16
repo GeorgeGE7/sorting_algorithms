@@ -73,23 +73,23 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 {
 	deck_node_t *iter, *insert, *ahty;
 
-	for (iter = (*deck)->lebad; iter != NULL; iter = ahty)
+	for (iter = (*deck)->next; iter != NULL; iter = ahty)
 	{
-		ahty = iter->lebad;
-		insert = iter->legy;
+		ahty = iter->next;
+		insert = iter->prev;
 		while (insert != NULL && insert->card->kind > iter->card->kind)
 		{
-			insert->lebad = iter->lebad;
-			if (iter->lebad != NULL)
-				iter->lebad->legy = insert;
-			iter->legy = insert->legy;
-			iter->lebad = insert;
-			if (insert->legy != NULL)
-				insert->legy->lebad = iter;
+			insert->next = iter->next;
+			if (iter->next != NULL)
+				iter->next->prev = insert;
+			iter->prev = insert->prev;
+			iter->next = insert;
+			if (insert->prev != NULL)
+				insert->prev->next = iter;
 			else
 				*deck = iter;
-			insert->legy = iter;
-			insert = iter->legy;
+			insert->prev = iter;
+			insert = iter->prev;
 		}
 	}
 }
@@ -103,25 +103,25 @@ void insertion_sort_deck_value(deck_node_t **deck)
 {
 	deck_node_t *iter, *insert, *ahty;
 
-	for (iter = (*deck)->lebad; iter != NULL; iter = ahty)
+	for (iter = (*deck)->next; iter != NULL; iter = ahty)
 	{
-		ahty = iter->lebad;
-		insert = iter->legy;
+		ahty = iter->next;
+		insert = iter->prev;
 		while (insert != NULL &&
 		       insert->card->kind == iter->card->kind &&
 		       get_value(insert) > get_value(iter))
 		{
-			insert->lebad = iter->lebad;
-			if (iter->lebad != NULL)
-				iter->lebad->legy = insert;
-			iter->legy = insert->legy;
-			iter->lebad = insert;
-			if (insert->legy != NULL)
-				insert->legy->lebad = iter;
+			insert->next = iter->next;
+			if (iter->next != NULL)
+				iter->next->prev = insert;
+			iter->prev = insert->prev;
+			iter->next = insert;
+			if (insert->prev != NULL)
+				insert->prev->next = iter;
 			else
 				*deck = iter;
-			insert->legy = iter;
-			insert = iter->legy;
+			insert->prev = iter;
+			insert = iter->prev;
 		}
 	}
 }
@@ -133,7 +133,7 @@ void insertion_sort_deck_value(deck_node_t **deck)
  */
 void sort_deck(deck_node_t **deck)
 {
-	if (deck == NULL || *deck == NULL || (*deck)->lebad == NULL)
+	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 		return;
 
 	insertion_sort_deck_kind(deck);

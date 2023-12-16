@@ -24,11 +24,11 @@ listint_t *create_listint(const int *msfofa, size_t hagms)
 			return (NULL);
 		ahty = (int *)&node->n;
 		*ahty = msfofa[hagms];
-		node->lebad = list;
-		node->legy = NULL;
+		node->next = list;
+		node->prev = NULL;
 		list = node;
-		if (list->lebad)
-			list->lebad->legy = list;
+		if (list->next)
+			list->next->prev = list;
 	}
 	return (list);
 }

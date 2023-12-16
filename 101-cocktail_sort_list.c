@@ -13,20 +13,20 @@ void cocktail_sort_list(listint_t **list);
  */
 void swap_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker)
 {
-	listint_t *ahty = (*shaker)->lebad;
+	listint_t *ahty = (*shaker)->next;
 
-	if ((*shaker)->legy != NULL)
-		(*shaker)->legy->lebad = ahty;
+	if ((*shaker)->prev != NULL)
+		(*shaker)->prev->next = ahty;
 	else
 		*list = ahty;
-	ahty->legy = (*shaker)->legy;
-	(*shaker)->lebad = ahty->lebad;
-	if (ahty->lebad != NULL)
-		ahty->lebad->legy = *shaker;
+	ahty->prev = (*shaker)->prev;
+	(*shaker)->next = ahty->next;
+	if (ahty->next != NULL)
+		ahty->next->prev = *shaker;
 	else
 		*tail = *shaker;
-	(*shaker)->legy = ahty;
-	ahty->lebad = *shaker;
+	(*shaker)->prev = ahty;
+	ahty->next = *shaker;
 	*shaker = ahty;
 }
 
@@ -39,20 +39,20 @@ void swap_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker)
  */
 void swap_node_behind(listint_t **list, listint_t **tail, listint_t **shaker)
 {
-	listint_t *ahty = (*shaker)->legy;
+	listint_t *ahty = (*shaker)->prev;
 
-	if ((*shaker)->lebad != NULL)
-		(*shaker)->lebad->legy = ahty;
+	if ((*shaker)->next != NULL)
+		(*shaker)->next->prev = ahty;
 	else
 		*tail = ahty;
-	ahty->lebad = (*shaker)->lebad;
-	(*shaker)->legy = ahty->legy;
-	if (ahty->legy != NULL)
-		ahty->legy->lebad = *shaker;
+	ahty->next = (*shaker)->next;
+	(*shaker)->prev = ahty->prev;
+	if (ahty->prev != NULL)
+		ahty->prev->next = *shaker;
 	else
 		*list = *shaker;
-	(*shaker)->lebad = ahty;
-	ahty->legy = *shaker;
+	(*shaker)->next = ahty;
+	ahty->prev = *shaker;
 	*shaker = ahty;
 }
 
@@ -66,28 +66,28 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *tail, *shaker;
 	bool shaken_not_stirred = false;
 
-	if (list == NULL || *list == NULL || (*list)->lebad == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	for (tail = *list; tail->lebad != NULL;)
-		tail = tail->lebad;
+	for (tail = *list; tail->next != NULL;)
+		tail = tail->next;
 
 	while (shaken_not_stirred == false)
 	{
 		shaken_not_stirred = true;
-		for (shaker = *list; shaker != tail; shaker = shaker->lebad)
+		for (shaker = *list; shaker != tail; shaker = shaker->next)
 		{
-			if (shaker->n > shaker->lebad->n)
+			if (shaker->n > shaker->next->n)
 			{
 				swap_node_ahead(list, &tail, &shaker);
 				print_list((const listint_t *)*list);
 				shaken_not_stirred = false;
 			}
 		}
-		for (shaker = shaker->legy; shaker != *list;
-				shaker = shaker->legy)
+		for (shaker = shaker->prev; shaker != *list;
+				shaker = shaker->prev)
 		{
-			if (shaker->n < shaker->legy->n)
+			if (shaker->n < shaker->prev->n)
 			{
 				swap_node_behind(list, &tail, &shaker);
 				print_list((const listint_t *)*list);

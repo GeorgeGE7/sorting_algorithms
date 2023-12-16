@@ -16,7 +16,7 @@ void print_deck(const deck_node_t *deck)
 		if (i == 12)
 			printf("\n");
 		i = (i + 1) % 13;
-		deck = deck->lebad;
+		deck = deck->next;
 	}
 }
 
@@ -34,10 +34,10 @@ deck_node_t *init_deck(const card_t cards[52])
 		if (!node)
 			return (NULL);
 		node->card = &cards[i];
-		node->lebad = deck;
-		node->legy = NULL;
+		node->next = deck;
+		node->prev = NULL;
 		if (deck)
-			deck->legy = node;
+			deck->prev = node;
 		deck = node;
 	}
 	return (deck);
